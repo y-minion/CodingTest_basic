@@ -6,9 +6,9 @@
   <body>
     <script>
       function solution(n) {
-        let result = Math.floor(n / 12); //몫
-        const doz = n % 12 === 0 ? result : result + 1;
-        console.log(doz);
+        let result = Math.ceil(n / 12);
+
+        console.log(result);
       }
 
       console.log(solution(25));
