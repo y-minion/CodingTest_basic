@@ -6,19 +6,20 @@
   <body>
     <script>
       function solution(...nums) {
-        let maxNum = nums[0];
-        let maxIdx;
-        nums.forEach((currentNum, idx) => {
-          if (maxNum < currentNum) {
-            maxNum = currentNum;
-            maxIdx = idx;
-          }
-        });
-        nums.splice(maxIdx, 1);
+        let maxNum = 0;
 
-        const restSum = nums.reduce((acc, num) => {
-          return acc + num;
+        const restSum = nums.reduce((acc, currentNum) => {
+          if (maxNum < currentNum) {
+            acc += maxNum; // 더하지 못한 값 더해주기
+
+            maxNum = currentNum; //최댓값 업데이트
+
+            return acc;
+          }
+
+          return acc + currentNum;
         }, 0);
+
         if (restSum > maxNum) {
           console.log("YES");
         } else {
