@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(...nums) {
+        let maxNum = nums[0];
+        let maxIdx;
+        nums.forEach((currentNum, idx) => {
+          if (maxNum < currentNum) {
+            maxNum = currentNum;
+            maxIdx = idx;
+          }
+        });
+        nums.splice(maxIdx, 1);
+
+        const restSum = nums.reduce((acc, num) => {
+          return acc + num;
+        }, 0);
+        if (restSum > maxNum) {
+          console.log("YES");
+        } else {
+          console.log("NO");
+        }
+      }
+
+      console.log(solution(6, 7, 11));
+    </script>
+  </body>
+</html>
