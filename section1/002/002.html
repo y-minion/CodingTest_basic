@@ -8,18 +8,15 @@
       function solution(...nums) {
         let maxNum = 0;
 
-        const restSum = nums.reduce((acc, currentNum) => {
+        const sum = nums.reduce((acc, currentNum) => {
           if (maxNum < currentNum) {
-            acc += maxNum; // 더하지 못한 값 더해주기
-
             maxNum = currentNum; //최댓값 업데이트
-
-            return acc;
           }
 
           return acc + currentNum;
         }, 0);
 
+        const restSum = sum - maxNum;
         if (restSum > maxNum) {
           console.log("YES");
         } else {
