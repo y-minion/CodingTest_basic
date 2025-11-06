@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        /*
+        const newArr = arr.filter((num) => num % 2 === 1); //홀수 판별
+
+        const sum = newArr.reduce((acc, num) => {
+          return acc + num;
+        }, 0);
+
+        //최솟값 찾기
+        let minNumber = Number.MAX_SAFE_INTEGER;
+        newArr.forEach((num) => {
+          if (num < minNumber) minNumber = num;
+        });
+
+        console.log(`${sum}\n${minNumber}`);
+        
+        */
+        let minNumber = Number.MAX_SAFE_INTEGER;
+        const result = arr.reduce((acc, num) => {
+          if (num % 2 === 1) {
+            if (num < minNumber) minNumber = num;
+
+            return acc + num;
+          }
+          return acc; //🚨 중요! -> 분기처리가 되지 않는 나머지 케이스들에 대해 return값 처리를 해줘야 한다. 반환값이 없으면 undefined로 반환이 된다.
+        }, 0);
+
+        return [result, minNumber];
+      }
+
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
