@@ -6,21 +6,15 @@
   <body>
     <script>
       function solution(s) {
-        //다른 좋은 방법이 있을까..?
-
-        let result;
-        let arr = [...s];
-        //홀짝 판단
-        if (s % 2 === 0) {
-          //짝수
-          result = arr.splice(arr.length / 2 - 1, 2);
+        const length = s.length;
+        const mid = Math.floor(length / 2);
+        if (length % 2 === 0) {
+          return s.substring(mid - 1, mid + 1);
         } else {
-          //홀수
-          result = arr.splice(Math.floor(arr.length / 2), 1);
+          return s.substr(mid, 1);
         }
-        console.log(result);
       }
-      console.log(solution("good"));
+      console.log(solution("goo123d"));
     </script>
   </body>
 </html>
