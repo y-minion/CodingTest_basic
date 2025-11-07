@@ -6,19 +6,19 @@
   <body>
     <script>
       function solution(arr) {
-        let result;
-        for (let i = 0; i < arr.length; i++) {
-          let copyArr = [...arr];
-          copyArr.splice(i, 2); //임의 제거
+        const sum = arr.reduce((acc, num) => acc + num, 0);
 
-          let sum = copyArr.reduce((acc, el) => acc + el, 0); //임의 멤버 키 합하기
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = 1; j < arr.length; j++) {
+            if (sum - (arr[i] + arr[j]) === 100) {
+              arr.splice(j, 1);
+              arr.splice(i, 1);
 
-          if (sum === 100) {
-            result = copyArr;
-            break; //100이 되는 순간 반복문 종료
+              console.log(arr);
+              return arr;
+            }
           }
         }
-        console.log(result);
       }
 
       let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
