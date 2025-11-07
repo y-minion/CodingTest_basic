@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        return [...s].reduce((acc, chr) => {
+          if (chr === chr.toLowerCase()) return acc + chr.toUpperCase();
+          return acc + chr.toLowerCase();
+        }, "");
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
