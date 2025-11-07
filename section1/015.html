@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가운데 문자 출력</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        //다른 좋은 방법이 있을까..?
+
+        let result;
+        let arr = [...s];
+        //홀짝 판단
+        if (s % 2 === 0) {
+          //짝수
+          result = arr.splice(arr.length / 2 - 1, 2);
+        } else {
+          //홀수
+          result = arr.splice(Math.floor(arr.length / 2), 1);
+        }
+        console.log(result);
+      }
+      console.log(solution("good"));
+    </script>
+  </body>
+</html>
