@@ -7,6 +7,7 @@
     <script>
       function solution(s) {
         const arr = [...s]; //문자열 배열로 분해
+        //대문자 판단은 toUpperCase()로 현재의 char를 변환한 후에 현재 char과 변환된 char을 비교한다.
         return arr.reduce((acc, char) => {
           if (char === "A") char = "#";
           return acc + char;
