@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let result;
+        for (let i = 0; i < arr.length; i++) {
+          let copyArr = [...arr];
+          copyArr.splice(i, 2); //임의 제거
+
+          let sum = copyArr.reduce((acc, el) => acc + el, 0); //임의 멤버 키 합하기
+
+          if (sum === 100) {
+            result = copyArr;
+            break; //100이 되는 순간 반복문 종료
+          }
+        }
+        console.log(result);
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      solution(arr);
+    </script>
+  </body>
+</html>
