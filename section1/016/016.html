@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복문자제거</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let count = 0;
+        let pos = s.indexOf("k");
+        while (pos != -1) {
+          count++;
+          pos = s.indexOf("k", pos + 1);
+        }
+      }
+
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
