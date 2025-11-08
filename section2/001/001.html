@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let flag;
+        return arr.filter((num, idx) => {
+          let result = false;
+          if (idx === 0) {
+            flag = num;
+            return true;
+          }
+          if (flag < num) {
+            result = true;
+          }
+          flag = num;
+          return result;
+        });
+      }
+
+      let arr = [7, 3, 9, 5, 6, 12];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
