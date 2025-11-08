@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복단어 제거</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        return s.filter((el, idx, arr) => arr.indexOf(el) === idx);
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
