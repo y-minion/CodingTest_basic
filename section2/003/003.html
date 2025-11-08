@@ -6,45 +6,13 @@
   <body>
     <script>
       function solution(a, b) {
-        const jokbo = {
-          si: (b) => {
-            switch (b) {
-              case "si":
-                return "D";
-              case "ro":
-                return "B";
-              case "pa":
-                return "A";
-            }
-          },
-          ro: (b) => {
-            switch (b) {
-              case "si":
-                return "A";
-              case "ro":
-                return "D";
-              case "pa":
-                return "B";
-            }
-          },
-          pa: (b) => {
-            switch (b) {
-              case "si":
-                return "B";
-              case "ro":
-                return "A";
-              case "pa":
-                return "D";
-            }
-          },
-        };
-        const arr = ["", "si", "ro", "pa"];
-
-        return a.map((el, idx) => {
-          const currentA = arr[el];
-          const currentB = arr[b[idx]];
-
-          return jokbo[currentA](currentB);
+        return a.map((A, idx) => {
+          const B = b[idx];
+          if (A === 1 && B === 3) return "A";
+          if (A === 2 && B === 1) return "A";
+          if (A === 3 && B === 2) return "A";
+          if (A === B) return "D";
+          return "B";
         });
       }
 
