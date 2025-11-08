@@ -6,18 +6,9 @@
   <body>
     <script>
       function solution(arr) {
-        let flag;
         return arr.filter((num, idx) => {
-          let result = false;
-          if (idx === 0) {
-            flag = num;
-            return true;
-          }
-          if (flag < num) {
-            result = true;
-          }
-          flag = num;
-          return result;
+          if (idx === 0) return true;
+          if (arr[idx - 1] < num) return true;
         });
       }
 
