@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let bonus = 0;
+        return arr.reduce((acc, arr) => {
+          if (el === 0) {
+            bonus = 0;
+            return acc;
+          }
+          acc += el + bonus;
+          bonus += 1;
+          return acc;
+        }, 0);
+      }
+
+      let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
