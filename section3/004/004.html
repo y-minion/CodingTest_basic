@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        const arr = s.split("");
+        return arr.map((char, idx) => {
+          let pos = 0;
+          const distanceArr = [];
+          while (arr.indexOf(t, pos) !== -1) {
+            const newPos = arr.indexOf(t, pos);
+            let dis = idx - newPos < 0 ? -1 * (idx - newPos) : idx - newPos;
+            distanceArr.push(dis);
+            pos = newPos + 1;
+          }
+          return Math.min(...distanceArr);
+        });
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
