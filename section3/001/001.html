@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>회문 문자열</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const transform = [...s.toLowerCase()];
+        let res = "YES";
+        for (let i = 0; i < transform.length; i++) {
+          if (transform[i] !== transform[transform.length - 1 - i]) {
+            res = "NO";
+            break;
+          }
+        }
+        return res;
+      }
+
+      let str = "goooG";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
