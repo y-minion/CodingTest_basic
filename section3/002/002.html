@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const pattern = /\d/;
+        const newArr = [...s].filter((char) => pattern.test(char)); // 그냥 문자열에 filter쓰면 안되나?
+
+        if (newArr[0] === "0") newArr.shift();
+        return Number(newArr.join(""));
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
