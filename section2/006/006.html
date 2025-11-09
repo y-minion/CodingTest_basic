@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const caseArr = [];
+        let case3 = 0;
+        let case4 = 0;
+        for (let i = 0; i < arr.length; i++) {
+          let case1 = 0;
+          let case2 = 0;
+          for (let j = 0; j < arr.length; j++) {
+            case1 += arr[i][j];
+            case2 += arr[j][i];
+            if (i == j) {
+              case3 += arr[i][j];
+            }
+          }
+
+          case4 += arr[i][arr.length - 1 - i];
+          caseArr.push(case1);
+          caseArr.push(case2);
+        }
+        caseArr.push(case3);
+        caseArr.push(case4);
+
+        return Math.max(...caseArr);
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
