@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>숫자만 추출</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        //숫자를 추출해 join하는 과정 없이 **숫자가 아닌** 문자열들은 공백으로 제거한다.
+        const regex = /\D+/g;
+        const replaced = s.replace(regex, "");
+        return Number(replaced);
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
