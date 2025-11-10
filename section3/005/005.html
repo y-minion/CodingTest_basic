@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let res = "";
+        let count = 0;
+        const arr = [...s];
+        const arrLength = arr.length;
+        arr.forEach((cur, idx) => {
+          if (idx === 0) {
+            count++;
+            return;
+          }
+          const before = arr[idx - 1];
+          if (cur === before) {
+            count++;
+          } else {
+            count = count === 1 ? "" : count;
+            res += `${before}${count}`;
+            count = 1;
+          }
+        });
+
+        if (arr[arrLength - 1] === arr[arrLength - 2]) {
+          res += `${arr[arrLength - 1]}${count}`;
+        } else {
+          res += arr[arrLength - 1];
+        }
+        return res;
+      }
+
+      let str = "KKHSSSSSSSE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

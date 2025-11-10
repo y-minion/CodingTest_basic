@@ -1,16 +1,15 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>출력결과</title>
+    <title>숫자만 추출</title>
   </head>
   <body>
     <script>
       function solution(s) {
-        const pattern = /\d/;
-        const newArr = [...s].filter((char) => pattern.test(char)); // 그냥 문자열에 filter쓰면 안되나?
-
-        if (newArr[0] === "0") newArr.shift();
-        return Number(newArr.join(""));
+        //숫자를 추출해 join하는 과정 없이 **숫자가 아닌** 문자열들은 공백으로 제거한다.
+        const regex = /\D+/g;
+        const replaced = s.replace(regex, "");
+        return Number(replaced);
       }
 
       let str = "g0en2T0s8eSoft";

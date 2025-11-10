@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const sumArr = arr.map((num) => {
+          const stringNum = num.toString();
+
+          return [...stringNum].reduce((acc, char) => {
+            return acc + Number(char);
+          }, 0);
+        });
+        console.log(sumArr);
+
+        let maxNum = Number.MIN_SAFE_INTEGER;
+        let maxIdx;
+        sumArr.forEach((num, i) => {
+          if (num > maxNum) {
+            maxNum = num;
+            maxIdx = i;
+          }
+          if (num === maxNum) {
+            if (arr[maxIdx] < arr[i]) maxIdx = i;
+          }
+        });
+
+        return arr[maxIdx];
+      }
+
+      let ar = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(ar));
+    </script>
+  </body>
+</html>
