@@ -6,28 +6,28 @@
   <body>
     <script>
       function solution(arr) {
-        const sumArr = arr.map((num) => {
-          const stringNum = num.toString();
-
-          return [...stringNum].reduce((acc, char) => {
-            return acc + Number(char);
-          }, 0);
-        });
-        console.log(sumArr);
-
-        let maxNum = Number.MIN_SAFE_INTEGER;
-        let maxIdx;
-        sumArr.forEach((num, i) => {
-          if (num > maxNum) {
-            maxNum = num;
-            maxIdx = i;
+        let maxSumNum = Number.MIN_SAFE_INTEGER;
+        let res;
+        for (const num of arr) {
+          let tempNum = num;
+          let curSum = 0;
+          while (tempNum !== 0) {
+            curSum += tempNum % 10;
+            tempNum = Math.floor(tempNum / 10);
           }
-          if (num === maxNum) {
-            if (arr[maxIdx] < arr[i]) maxIdx = i;
+          if (maxSumNum < curSum) {
+            res = num;
+            maxSumNum = curSum;
+          } else if (maxSumNum === curSum) {
+            if (res < num) {
+              res = num;
+            }
           }
-        });
 
-        return arr[maxIdx];
+          console.log(curSum, num);
+        }
+
+        return res;
       }
 
       let ar = [128, 460, 603, 40, 521, 137, 123];
