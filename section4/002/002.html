@@ -5,35 +5,39 @@
   </head>
   <body>
     <script>
+      function reverseNum(num) {
+        return Number([...num.toString()].reverse().join(""));
+      }
+
       function isPrime(num) {
-        let res = [];
-        num.forEach((n) => {
-          const transformedArr = [];
-          //숫자 뒤집기
-          [...n.toString()].forEach((char) => {
-            transformedArr.unshift(char);
-          });
-          const reversedNum = Number(transformedArr.join(""));
+        if (num === 1) return false;
+        if (num === 2) return true;
+        if (num === 3) return true;
 
-          //엣지 케이스
-          if (reversedNum === 2 || reversedNum === 3) {
-            res.push(reversedNum);
-            return;
-          }
-          if (reversedNum === 1) return;
+        if (num % 2 === 0) return false;
+        for (let i = 3; i <= Math.sqrt(num); i += 2) {
+          const namuzi = num % i; //나머지
 
-          //그냥 sqrt가 아니라 Math.sqrt()임!!
-          for (let i = 2; i <= Math.sqrt(reversedNum); i++) {
-            if (reversedNum % i === 0) return;
+          if (namuzi === 0) return false; //즉시 종료
+        }
+        return true;
+      }
+
+      function solution(arr) {
+        const res = [];
+
+        arr.forEach((num) => {
+          const reversed = reverseNum(num);
+          if (isPrime(reversed)) {
+            res.push(reversed);
           }
-          res.push(reversedNum);
-          return;
         });
+
         return res;
       }
 
       let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
-      console.log(isPrime(arr));
+      console.log(solution(arr));
     </script>
   </body>
 </html>
