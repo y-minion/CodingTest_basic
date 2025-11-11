@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function studentMaker(length) {
+        const res = [];
+        for (let i = 1; i < length + 1; i++) {
+          res.push(i);
+        }
+        return res;
+      }
+
+      function solution(testArr) {
+        let count = 0;
+        const studentsArr = studentMaker(testArr[0].length);
+        for (const m of studentsArr) {
+          for (const n of studentsArr) {
+            if (m == n) continue;
+
+            //모든 테스트 비교
+            let isAll = true;
+            for (const test of testArr) {
+              if (test.indexOf(m) > test.indexOf(n)) {
+                isAll = false;
+                break;
+              }
+            }
+            //모든 테스트를 통과해야 카운트
+            if (isAll) count++;
+          }
+        }
+
+        return count;
+      }
+
+      let arr = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
