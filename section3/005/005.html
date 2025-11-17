@@ -5,32 +5,20 @@
   </head>
   <body>
     <script>
-      function solution(s) {
-        let res = "";
-        let count = 0;
-        const arr = [...s];
-        const arrLength = arr.length;
-        arr.forEach((cur, idx) => {
-          if (idx === 0) {
-            count++;
-            return;
-          }
-          const before = arr[idx - 1];
-          if (cur === before) {
-            count++;
-          } else {
-            count = count === 1 ? "" : count;
-            res += `${before}${count}`;
+      function solution(str) {
+        let count = 1;
+        const res = [];
+        [...str].forEach((el, i, arr) => {
+          if (el !== arr[i + 1]) {
+            res.push(el);
+            if (count > 1) res.push(count);
             count = 1;
+          } else {
+            count++;
           }
         });
 
-        if (arr[arrLength - 1] === arr[arrLength - 2]) {
-          res += `${arr[arrLength - 1]}${count}`;
-        } else {
-          res += arr[arrLength - 1];
-        }
-        return res;
+        return res.join("");
       }
 
       let str = "KKHSSSSSSSE";

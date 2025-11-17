@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function sumPrice(arr) {
+        return arr.reduce((acc, num) => acc + num, 0);
+      }
+
+      function sortList(arr) {
+        arr.sort((a, b) => {
+          const sumA = sumPrice(a);
+          const sumB = sumPrice(b);
+          return sumA - sumB;
+        });
+      }
+
+      function disCountPrice(price) {
+        return price / 2;
+      }
+
+      function solution(budget, productList) {
+        //초반 그리디 -> 오름차순 정렬
+        // sortList(productList); --> 완전 잘못된 접근!! 할인한 뒤에 정렬을 해야 의미가 있다.
+        let maxCount = Number.MIN_SAFE_INTEGER;
+
+        //모든 경우에 할인 먹여보기
+        for (let i = 0; i < productList.length; i++) {
+          let curPrice = 0;
+          let curCount = 0;
+          //할인 적용된 새로운 배열
+          const newArr = productList.map((list, idx) => {
+            if (i === idx) return [disCountPrice(list[0]), list[1]];
+            return list;
+          });
+
+          sortList(newArr); //그리디의 선행 조건. 할인을 한 뒤에 꼭 이후에 정렬을 해줘야 진짜 오름차순이 된다.
+
+          //새로운 배열을 바탕으로 계속 더하기
+          for (const priceArr of newArr) {
+            curPrice += sumPrice(priceArr);
+
+            //예산보다 현재 금액이 작거나 같은 경우에만 횟수 카운트
+            if (curPrice <= budget) {
+              curCount++;
+            } else {
+              //예산 초과시 즉시 루프 종료
+              break;
+            }
+          }
+
+          //최대 횟수 비교 & 업데이트
+          if (curCount > maxCount) maxCount = curCount;
+        }
+
+        return maxCount;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>

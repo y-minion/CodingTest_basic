@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, card) {
+        const cardLength = card.length;
+        const sumArr = [];
+
+        //조건인 N(카드)범위가 1~50 이니까 50^3 -> 125000번... 1초안에 충분히 가능할듯?
+        for (let i = 0; i < cardLength - 2; i++) {
+          for (let j = i + 1; j < cardLength - 1; j++) {
+            for (let k = j + 1; k < cardLength; k++) {
+              const cardA = card[i];
+              const cardB = card[j];
+              const cardC = card[k];
+              sumArr.push(cardA + cardB + cardC);
+            }
+          }
+        }
+
+        sumArr.sort((a, b) => b - a);
+
+        return sumArr[k - 1];
+      }
+
+      let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
